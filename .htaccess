@@ -1,0 +1,29 @@
+# ===========================================================================
+# Panel de despliegue. Docroot = esta carpeta.
+# ===========================================================================
+
+Options -Indexes
+DirectoryIndex index.php
+
+# Nunca servir archivos internos aunque estén en la raíz.
+<IfModule mod_authz_core.c>
+    <FilesMatch "\.(env|json|log|sh|phar|pid|ini|sql|bak|yml|yaml|md|txt)$">
+        Require all denied
+    </FilesMatch>
+    <FilesMatch "^\.">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+# ---- Seguridad opcional -----------------------------------------------
+# 1) Forzar HTTPS (descomentar cuando el SSL ya funcione):
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} !=on
+#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# </IfModule>
+#
+# 2) Limitar el panel a tu IP (recomendado si tenés IP fija):
+# <IfModule mod_authz_core.c>
+#     Require ip 203.0.113.10
+# </IfModule>
