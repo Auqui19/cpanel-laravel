@@ -141,20 +141,6 @@ function history_duration(array $job): string
   </style>
 </head>
 <body class="history-page">
-  <header class="topbar">
-    <div class="topbar-inner">
-      <button type="button" class="btn sidebar-toggle" data-variant="outline" data-size="icon-sm"
-              aria-label="Abrir menú" onclick="document.getElementById('sidebar')?.toggle()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-      </button>
-      <div class="chips">
-        <span class="chip">Cuenta: <b><?= h($settings['cpanel_user'] ?? '—') ?></b></span>
-        <span class="chip">Proyecto: <b><?= h($settings['app_path'] !== '' ? basename($settings['app_path']) : 'sin proyecto') ?></b></span>
-        <span class="chip">Historial: <b><?= count($jobs) ?> trabajos</b></span>
-      </div>
-    </div>
-  </header>
-
   <aside id="sidebar" class="sidebar" data-side="left">
     <nav aria-label="Navegación del panel">
       <header class="sidebar-brand">
@@ -187,6 +173,20 @@ function history_duration(array $job): string
   </aside>
 
   <main>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button type="button" class="btn sidebar-toggle" data-variant="outline" data-size="icon-sm"
+                aria-label="Abrir menú" onclick="document.getElementById('sidebar')?.toggle()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+        <div class="chips">
+          <span class="chip">Cuenta: <b><?= h($settings['cpanel_user'] ?? '—') ?></b></span>
+          <span class="chip">Proyecto: <b><?= h($settings['app_path'] !== '' ? basename($settings['app_path']) : 'sin proyecto') ?></b></span>
+          <span class="chip">Historial: <b><?= count($jobs) ?> trabajos</b></span>
+        </div>
+      </div>
+    </header>
+
     <div class="wrap">
       <div class="history-toolbar">
         <h1 class="history-title">Historial</h1>

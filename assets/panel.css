@@ -15,6 +15,7 @@
   .wrap {
     max-width: 940px;
     margin: 0 auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -44,12 +45,14 @@
     align-items: center;
     gap: 12px;
     height: 100%;
+    width: 100%;
     padding: 0 16px;
   }
 
   .topbar .chips {
     flex: 1;
     min-width: 0;
+    justify-content: flex-end;
     flex-wrap: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
@@ -57,7 +60,7 @@
 
   .topbar .chips::-webkit-scrollbar { display: none; }
 
-  .sidebar > nav { top: var(--navbar-h); }
+  .sidebar > nav { top: 0; }
 
   main > .wrap { padding: 16px 16px 40px; }
 
