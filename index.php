@@ -294,7 +294,7 @@ function job_time(array $job): string
                 </a>
               </li>
               <li>
-                <a href="#historial">
+                <a href="history.php">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
                   <span>Historial</span>
                 </a>
@@ -539,38 +539,6 @@ function job_time(array $job): string
         <button type="button" class="btn" data-variant="outline" data-size="xs" id="clear-console">Limpiar</button>
       </div>
       <div id="console-box"><span id="console" class="console-empty">Elegí una acción para ver la salida acá.</span></div>
-    </div>
-
-    <!-- Historial -->
-    <div class="card" id="historial">
-      <header>
-        <h2>Historial</h2>
-        <p>Últimos trabajos ejecutados.</p>
-      </header>
-      <section>
-        <?php if (!$jobs): ?>
-          <p class="is-muted" style="margin:0">Sin ejecuciones todavía.</p>
-        <?php else: ?>
-          <div class="table-container table-flush">
-            <table class="table">
-              <thead>
-                <tr><th>Hora</th><th>Acción</th><th>Resultado</th><th>Tiempo</th><th></th></tr>
-              </thead>
-              <tbody>
-              <?php foreach ($jobs as $job): ?>
-                <tr>
-                  <td class="mono"><?= h(date('d/m H:i:s', (int) ($job['started'] ?? 0))) ?></td>
-                  <td><?= h($actions[$job['action']]['label'] ?? $job['action']) ?></td>
-                  <td><?= job_badge($job) ?></td>
-                  <td class="mono"><?= h(job_time($job)) ?></td>
-                  <td><a href="ajax.php?download=<?= h($job['id']) ?>">log</a></td>
-                </tr>
-              <?php endforeach; ?>
-              </tbody>
-            </table>
-          </div>
-        <?php endif; ?>
-      </section>
     </div>
 
       </div>

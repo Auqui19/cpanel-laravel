@@ -18,6 +18,7 @@ Permite ejecutar acciones de Composer y Artisan desde un subdominio, mostrando e
 - Ejecución inmediata desde botones.
 - Logs en vivo mediante polling.
 - Historial de ejecuciones.
+- Página de historial separada con listado de trabajos y detalle del log.
 - Cancelación de procesos cuando el servidor lo permite.
 - Diagnóstico separado en:
   - `OK`
@@ -95,6 +96,7 @@ La estructura debe quedar así:
 ```text
 deploy.tudominio.com/
 ├── index.php
+├── history.php
 ├── ajax.php
 ├── run.php
 ├── env.php
@@ -270,6 +272,12 @@ Los logs se guardan en:
 ```text
 data/logs/
 ```
+
+El historial se consulta desde `history.php` y utiliza un layout responsive:
+
+- 30% para el listado de ejecuciones.
+- 70% para el detalle del log seleccionado.
+- En pantallas pequeñas las dos zonas pasan a una sola columna.
 
 La configuración detectada se guarda en:
 
